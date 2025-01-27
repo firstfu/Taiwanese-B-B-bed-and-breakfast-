@@ -40,8 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // 動態載入旅客評價
-  const testimonialSlider = document.querySelector(".testimonial-slider");
-  if (testimonialSlider) {
+  const reviewContainer = document.querySelector(".review-cards");
+  if (reviewContainer) {
     loadTestimonials();
   }
 });
@@ -111,22 +111,33 @@ const testimonials = [
 
 // 載入旅客評價
 function loadTestimonials() {
-  const slider = document.querySelector(".testimonial-slider");
-  testimonials.forEach(testimonial => {
-    const testimonialCard = document.createElement("div");
-    testimonialCard.className = "testimonial-card";
-    testimonialCard.innerHTML = `
-            <div class="testimonial-content">
-                <p>${testimonial.content}</p>
-                <div class="rating">
-                    ${"★".repeat(testimonial.rating)}
-                </div>
-                <div class="testimonial-info">
-                    <span class="name">${testimonial.name}</span>
-                    <span class="date">${testimonial.date}</span>
-                </div>
-            </div>
-        `;
-    slider.appendChild(testimonialCard);
+  const reviewContainer = document.querySelector(".review-cards");
+  if (!reviewContainer) return;
+
+  // 清空現有內容
+  reviewContainer.innerHTML = "";
+
+  testimonials.forEach((testimonial, index) => {
+    const reviewCard = document.createElement("div");
+    reviewCard.className = "review-card";
+
+    const stars = "★".repeat(testimonial.rating) + "☆".repeat(5 - testimonial.rating);
+
+    // 使用 Pravatar 生成真實人物頭像，使用 index 確保每個評價有不同的頭像
+    const avatarUrl = `https://i.pravatar.cc/60?img=${index + 1}`;
+
+    reviewCard.innerHTML = `
+      <div class="review-header">
+        <img src="${avatarUrl}" alt="${testimonial.name}" class="reviewer-avatar">
+        <div class="review-stars">${stars}</div>
+      </div>
+      <div class="review-content">${testimonial.content}</div>
+      <div class="reviewer-info">
+        <span class="reviewer-name">${testimonial.name}</span>
+        <span class="review-date">${testimonial.date}</span>
+      </div>
+    `;
+
+    reviewContainer.appendChild(reviewCard);
   });
 }
