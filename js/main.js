@@ -1,5 +1,26 @@
 // 漢堡選單功能
 document.addEventListener("DOMContentLoaded", function () {
+  // 導航選單項目點擊效果
+  const navLinks = document.querySelectorAll(".nav-menu a");
+  const currentPath = window.location.pathname;
+
+  // 設置初始激活狀態
+  navLinks.forEach(link => {
+    if (link.getAttribute("href") === currentPath || (currentPath === "/" && link.getAttribute("href") === "/")) {
+      link.classList.add("active");
+    }
+  });
+
+  // 添加點擊事件處理
+  navLinks.forEach(link => {
+    link.addEventListener("click", function (e) {
+      // 如果不是同一頁面的錨點鏈接，移除其他項目的 active 類別
+      if (!this.getAttribute("href").startsWith("#")) {
+        navLinks.forEach(item => item.classList.remove("active"));
+        this.classList.add("active");
+      }
+    });
+  });
   // 漢堡選單切換
   const menuToggle = document.querySelector(".menu-toggle");
   const navMenu = document.querySelector(".nav-menu");
@@ -109,16 +130,3 @@ function loadTestimonials() {
     slider.appendChild(testimonialCard);
   });
 }
-
-// 平滑滾動功能
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-      });
-    }
-  });
-});
