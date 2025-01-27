@@ -2,6 +2,20 @@
 
 [View in English](#english) | [觀看中文版本](#中文)
 
+## Website Preview 網站預覽
+
+### Homepage 首頁
+
+![Homepage](screenshots/homepage.png)
+
+### Room Preview 房型預覽
+
+![Rooms](screenshots/rooms.png)
+
+### Guest Reviews 旅客評價
+
+![Reviews](screenshots/reviews.png)
+
 ---
 
 # [English]
@@ -11,6 +25,20 @@
 ## Project Overview
 
 A responsive website for a traditional Taiwanese B&B (bed and breakfast), featuring room booking, member management, and location information. The website provides an intuitive interface for guests to explore room options, make reservations, and contact the establishment.
+
+## Screenshots
+
+### Booking System
+
+![Booking System](screenshots/booking.png)
+
+### Location Information
+
+![Location](screenshots/location.png)
+
+### Contact Form
+
+![Contact](screenshots/contact.png)
 
 ## Installation
 
@@ -63,6 +91,20 @@ We welcome contributions to improve the website. Please follow these steps:
 ## 專案概述
 
 這是一個為台灣傳統民宿打造的響應式網站，提供房間預訂、會員管理和位置資訊等功能。網站為旅客提供直覺的介面來探索房型選擇、進行預訂和聯繫民宿。
+
+## 網站截圖
+
+### 訂房系統
+
+![訂房系統](screenshots/booking.png)
+
+### 位置資訊
+
+![位置資訊](screenshots/location.png)
+
+### 聯絡表單
+
+![聯絡表單](screenshots/contact.png)
 
 ## 安裝方式
 
