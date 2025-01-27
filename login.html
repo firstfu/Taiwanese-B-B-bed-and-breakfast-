@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登入/註冊 - 山林靜境民宿</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav-container">
+        <div class="logo">
+          <a href="/">山林靜境民宿</a>
+        </div>
+        <div class="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="/">首頁</a></li>
+          <li><a href="/rooms.html">房型介紹</a></li>
+          <li><a href="/booking.html">線上訂房</a></li>
+          <li><a href="/location.html">交通位置</a></li>
+          <li><a href="/contact.html">聯絡我們</a></li>
+          <li class="login-btn active"><a href="/login.html">登入/註冊</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="login-container">
+      <div class="form-container">
+        <div class="form-tabs">
+          <button class="tab-btn active" data-tab="login">登入</button>
+          <button class="tab-btn" data-tab="register">註冊</button>
+        </div>
+
+        <!-- 登入表單 -->
+        <form id="loginForm" class="form-content active">
+          <h2>會員登入</h2>
+          <div class="form-group">
+            <label for="loginEmail">電子郵件</label>
+            <input type="email" id="loginEmail" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">密碼</label>
+            <input type="password" id="loginPassword" name="password" required />
+          </div>
+          <div class="form-group remember-me">
+            <input type="checkbox" id="rememberMe" name="rememberMe" />
+            <label for="rememberMe">記住我</label>
+            <a href="#" class="forgot-password">忘記密碼？</a>
+          </div>
+          <button type="submit" class="submit-btn">登入</button>
+        </form>
+
+        <!-- 註冊表單 -->
+        <form id="registerForm" class="form-content">
+          <h2>會員註冊</h2>
+          <div class="form-group">
+            <label for="registerName">姓名</label>
+            <input type="text" id="registerName" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="registerEmail">電子郵件</label>
+            <input type="email" id="registerEmail" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="registerPassword">密碼</label>
+            <input type="password" id="registerPassword" name="password" required />
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">確認密碼</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">手機號碼</label>
+            <input type="tel" id="phone" name="phone" required />
+          </div>
+          <button type="submit" class="submit-btn">註冊</button>
+        </form>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>聯絡資訊</h3>
+          <p>電話：(02) 1234-5678</p>
+          <p>地址：台灣省山林市安靜區寧靜路123號</p>
+          <p>Email：contact@forest-hotel.com</p>
+        </div>
+        <div class="footer-section">
+          <h3>快速連結</h3>
+          <ul>
+            <li><a href="/rooms.html">房型介紹</a></li>
+            <li><a href="/booking.html">線上訂房</a></li>
+            <li><a href="/location.html">交通資訊</a></li>
+            <li><a href="/contact.html">聯絡我們</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>追蹤我們</h3>
+          <div class="social-links">
+            <a href="#" target="_blank">Facebook</a>
+            <a href="#" target="_blank">Instagram</a>
+            <a href="#" target="_blank">Line</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 山林靜境民宿 All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>
