@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="立即在山林靜境民宿預訂房間，享受優質的住宿體驗。提供簡單便利的線上訂房系統。" />
+    <title>線上訂房 - 山林靜境民宿</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/booking.css" />
+    <!-- 日期選擇器 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav-container">
+        <div class="logo">
+          <a href="/">山林靜境民宿</a>
+        </div>
+        <div class="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="/">首頁</a></li>
+          <li><a href="/rooms.html">房型介紹</a></li>
+          <li><a href="/booking.html">線上訂房</a></li>
+          <li><a href="/location.html">交通位置</a></li>
+          <li><a href="/contact.html">聯絡我們</a></li>
+          <li class="login-btn"><a href="/login.html">登入/註冊</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="booking-page">
+      <section class="page-banner">
+        <div class="banner-content">
+          <h1>線上訂房</h1>
+          <p>簡單便利的預訂流程</p>
+        </div>
+      </section>
+
+      <section class="booking-section">
+        <div class="container">
+          <div class="booking-wrapper">
+            <div class="booking-form-container">
+              <form id="bookingForm" class="booking-form">
+                <div class="form-group">
+                  <h3>選擇日期</h3>
+                  <div class="date-inputs">
+                    <div class="input-group">
+                      <label for="checkIn">入住日期</label>
+                      <input type="text" id="checkIn" name="checkIn" required />
+                    </div>
+                    <div class="input-group">
+                      <label for="checkOut">退房日期</label>
+                      <input type="text" id="checkOut" name="checkOut" required />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <h3>選擇房型</h3>
+                  <div class="room-selection">
+                    <div class="room-option">
+                      <input type="radio" id="room1" name="roomType" value="mountain" required />
+                      <label for="room1">
+                        <div class="room-details">
+                          <img src="images/room1.jpg" alt="山景豪華雙人房" />
+                          <div class="room-info">
+                            <h4>山景豪華雙人房</h4>
+                            <p>NT$ 3,800 / 晚</p>
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="room-option">
+                      <input type="radio" id="room2" name="roomType" value="family" />
+                      <label for="room2">
+                        <div class="room-details">
+                          <img src="images/room2.jpg" alt="溫馨家庭套房" />
+                          <div class="room-info">
+                            <h4>溫馨家庭套房</h4>
+                            <p>NT$ 4,500 / 晚</p>
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="room-option">
+                      <input type="radio" id="room3" name="roomType" value="single" />
+                      <label for="room3">
+                        <div class="room-details">
+                          <img src="images/room3.jpg" alt="精緻單人房" />
+                          <div class="room-info">
+                            <h4>精緻單人房</h4>
+                            <p>NT$ 2,800 / 晚</p>
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <h3>訂房資訊</h3>
+                  <div class="guest-info">
+                    <div class="input-group">
+                      <label for="name">姓名</label>
+                      <input type="text" id="name" name="name" required />
+                    </div>
+                    <div class="input-group">
+                      <label for="phone">電話</label>
+                      <input type="tel" id="phone" name="phone" required />
+                    </div>
+                    <div class="input-group">
+                      <label for="email">Email</label>
+                      <input type="email" id="email" name="email" required />
+                    </div>
+                    <div class="input-group full-width">
+                      <label for="special-requests">特殊需求</label>
+                      <textarea id="special-requests" name="specialRequests" rows="3"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="booking-summary">
+              <div class="summary-card">
+                <h3>訂房明細</h3>
+                <div class="summary-content">
+                  <div class="summary-item">
+                    <span>入住日期</span>
+                    <span id="summaryCheckIn">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span>退房日期</span>
+                    <span id="summaryCheckOut">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span>住宿天數</span>
+                    <span id="summaryNights">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span>房型</span>
+                    <span id="summaryRoom">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span>每晚單價</span>
+                    <span id="summaryPrice">-</span>
+                  </div>
+                  <div class="divider"></div>
+                  <div class="summary-item total">
+                    <span>總計</span>
+                    <span id="summaryTotal">-</span>
+                  </div>
+                </div>
+                <button type="submit" form="bookingForm" class="submit-booking">確認預訂</button>
+                <div class="booking-notes">
+                  <p>※ 預訂確認後，需支付30%訂金</p>
+                  <p>※ 入住前7天可免費取消</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>聯絡資訊</h3>
+          <p>電話：(02) 1234-5678</p>
+          <p>地址：台灣省山林市安靜區寧靜路123號</p>
+          <p>Email：contact@forest-hotel.com</p>
+        </div>
+        <div class="footer-section">
+          <h3>快速連結</h3>
+          <ul>
+            <li><a href="/rooms.html">房型介紹</a></li>
+            <li><a href="/booking.html">線上訂房</a></li>
+            <li><a href="/location.html">交通資訊</a></li>
+            <li><a href="/contact.html">聯絡我們</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>追蹤我們</h3>
+          <div class="social-links">
+            <a href="#" target="_blank">Facebook</a>
+            <a href="#" target="_blank">Instagram</a>
+            <a href="#" target="_blank">Line</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 山林靜境民宿 All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <!-- 日期選擇器 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/zh-tw.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/booking.js"></script>
+  </body>
+</html>

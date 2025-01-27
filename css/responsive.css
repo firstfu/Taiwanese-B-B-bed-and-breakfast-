@@ -1,0 +1,121 @@
+/* 平板設備 (768px ~ 1024px) */
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .room-preview .room-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonial-slider {
+    padding: 0 1rem;
+  }
+}
+
+/* 手機設備 (小於 768px) */
+@media screen and (max-width: 768px) {
+  /* 導航選單 */
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--white);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-menu.active {
+    display: block;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-menu li {
+    margin: 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .nav-menu a {
+    padding: 1rem;
+  }
+
+  /* Hero 區塊 */
+  .hero {
+    height: 60vh;
+  }
+
+  .hero-content {
+    padding: 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  /* 特色區塊 */
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-item {
+    margin-bottom: 2rem;
+  }
+
+  /* 房型預覽 */
+  .room-preview .room-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}
+
+/* 小型手機設備 (小於 480px) */
+@media screen and (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .feature-item img {
+    height: 200px;
+  }
+
+  .cta-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-section {
+    padding: 1rem;
+  }
+}

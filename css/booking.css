@@ -1,0 +1,316 @@
+/* 訂房頁面樣式 */
+.booking-page {
+  background-color: var(--light-bg);
+  min-height: 100vh;
+}
+
+/* 訂房區塊排版 */
+.booking-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+/* 表單容器 */
+.booking-form-container {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+
+/* 表單群組 */
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-group h3 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+/* 日期選擇區 */
+.date-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+/* Flatpickr 日期選擇器客製化 */
+.flatpickr-calendar {
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.flatpickr-day.selected {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* 房型選擇區 */
+.room-selection {
+  display: grid;
+  gap: 1rem;
+}
+
+.room-option {
+  position: relative;
+}
+
+.room-option input[type="radio"] {
+  display: none;
+}
+
+.room-option label {
+  display: block;
+  cursor: pointer;
+}
+
+.room-details {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.room-option input[type="radio"]:checked + label .room-details {
+  border-color: var(--primary-color);
+  background-color: rgba(74, 103, 65, 0.05);
+}
+
+.room-details img {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 1rem;
+}
+
+.room-info h4 {
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.room-info p {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+/* 訂房資訊區 */
+.guest-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* 訂房明細卡片 */
+.booking-summary {
+  position: sticky;
+  top: 100px;
+}
+
+.summary-card {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+
+.summary-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.summary-content {
+  margin-bottom: 2rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.summary-item.total {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.divider {
+  height: 1px;
+  background-color: #ddd;
+  margin: 1rem 0;
+}
+
+/* 確認按鈕 */
+.submit-booking {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-booking:hover {
+  background-color: var(--secondary-color);
+}
+
+/* 訂房注意事項 */
+.booking-notes {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ddd;
+}
+
+.booking-notes p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+/* 錯誤提示 */
+.error-message {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.input-error {
+  border-color: #dc3545;
+}
+
+/* 載入動畫 */
+.loading {
+  position: relative;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border: 2px solid var(--primary-color);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 響應式設計 */
+@media screen and (max-width: 1024px) {
+  .booking-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-summary {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .date-inputs,
+  .guest-info {
+    grid-template-columns: 1fr;
+  }
+
+  .room-details {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .room-details img {
+    width: 100%;
+    height: 150px;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .booking-form-container,
+  .summary-card {
+    padding: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .submit-booking {
+    padding: 0.8rem;
+  }
+}
+
+/* 打印樣式 */
+@media print {
+  .booking-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-form-container {
+    display: none;
+  }
+
+  .booking-summary {
+    position: static;
+  }
+
+  .submit-booking,
+  .booking-notes {
+    display: none;
+  }
+}

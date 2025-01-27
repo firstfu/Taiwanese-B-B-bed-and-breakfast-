@@ -1,0 +1,312 @@
+/* 聯絡頁面樣式 */
+
+/* 聯絡區塊排版 */
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+/* 聯絡資訊區塊 */
+.contact-info {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.contact-info h2 {
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+/* 資訊項目樣式 */
+.info-items {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.info-item i {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  background-color: rgba(74, 103, 65, 0.1);
+  padding: 1rem;
+  border-radius: 50%;
+}
+
+.info-content h3 {
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.info-content p {
+  color: var(--text-color);
+  margin-bottom: 0.25rem;
+}
+
+.info-content .note {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* 社群連結 */
+.social-contact {
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.social-contact h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--light-bg);
+  border-radius: 25px;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.social-link i {
+  font-size: 1.2rem;
+}
+
+/* 聯絡表單 */
+.contact-form-container {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.contact-form-container h2 {
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.contact-form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  cursor: pointer;
+}
+
+.submit-button {
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: var(--secondary-color);
+}
+
+/* 地圖區塊 */
+.map-container {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.map-container h2 {
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.map-wrapper {
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.map-info {
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.map-info h3 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.transport-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.transport-item h4 {
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.transport-item p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 錯誤提示 */
+.error-message {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.input-error {
+  border-color: #dc3545 !important;
+}
+
+/* 載入動畫 */
+.loading {
+  position: relative;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--primary-color);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 響應式設計 */
+@media screen and (max-width: 1024px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .transport-options {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contact-info,
+  .contact-form-container,
+  .map-container {
+    padding: 1.5rem;
+  }
+
+  .social-links {
+    flex-wrap: wrap;
+  }
+
+  .social-link {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .info-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .info-item i {
+    margin: 0 auto;
+  }
+}
+
+/* 打印樣式 */
+@media print {
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-container,
+  .social-contact,
+  .submit-button {
+    display: none;
+  }
+
+  .map-wrapper iframe {
+    height: 300px;
+  }
+}
