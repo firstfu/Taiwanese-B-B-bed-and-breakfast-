@@ -1,8 +1,7 @@
 /* 房型頁面樣式 */
-.rooms-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+.rooms-section {
+  padding: 4rem 0;
+  background-color: var(--light-bg);
 }
 
 .page-title {

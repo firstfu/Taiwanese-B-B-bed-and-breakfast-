@@ -6,6 +6,12 @@
   background-color: var(--light-bg);
 }
 
+.location-section > .container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
 /* 地圖容器 */
 .map-container {
   background-color: var(--white);
@@ -54,7 +60,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  padding: 0 1rem;
 }
 
 /* 交通方式卡片 */

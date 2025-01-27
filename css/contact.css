@@ -1,6 +1,18 @@
 /* 聯絡頁面樣式 */
 
+/* 主要內容區塊 */
+.contact-section {
+  padding: 4rem 0;
+  background-color: var(--light-bg);
+}
+
 /* 聯絡區塊排版 */
+.contact-section > .container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
 .contact-wrapper {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
