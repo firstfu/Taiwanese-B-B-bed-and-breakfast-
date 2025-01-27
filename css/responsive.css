@@ -11,6 +11,20 @@
 
   .room-preview .room-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+
+  .room-card img {
+    height: 220px;
+  }
+
+  .room-info {
+    padding: 1.25rem;
+  }
+
+  .room-info h3 {
+    font-size: 1.3rem;
   }
 
   .testimonial-slider {
@@ -82,6 +96,38 @@
   /* 房型預覽 */
   .room-preview .room-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .room-card {
+    max-width: 100%;
+  }
+
+  .room-card img {
+    height: 200px;
+  }
+
+  .room-info {
+    padding: 1rem;
+  }
+
+  .room-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .room-price {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .view-all-button {
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto 0;
+    text-align: center;
   }
 
   /* Footer */
@@ -106,13 +152,30 @@
     font-size: 1.5rem;
   }
 
-  .feature-item img {
-    height: 200px;
+  .room-preview {
+    padding: 3rem 1rem;
+  }
+
+  .room-card img {
+    height: 180px;
+  }
+
+  .room-info p {
+    font-size: 0.9rem;
+  }
+
+  .room-button {
+    width: 100%;
+    text-align: center;
   }
 
   .cta-button {
     width: 100%;
     text-align: center;
+  }
+
+  .feature-item img {
+    height: 200px;
   }
 
   .footer-section {
