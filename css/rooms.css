@@ -27,44 +27,86 @@
   border-radius: 8px;
 }
 
-/* 照片區域樣式 */
-.room-photos {
+/* 輪播區域樣式 */
+.room-carousel {
   position: relative;
   width: 100%;
 }
 
-.main-photo {
-  width: 100%;
-  height: 350px;
-  display: block;
-  object-fit: cover;
+.carousel-container {
+  position: relative;
+  overflow: hidden;
   border-radius: 6px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
 }
 
-.main-photo:hover {
-  transform: scale(1.02);
-}
-
-.photo-gallery {
+.carousel-track {
   display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-  flex-wrap: wrap;
+  transition: transform 0.5s ease-in-out;
 }
 
-.thumbnail {
-  width: 80px;
-  height: 60px;
+.carousel-slide {
+  width: 100%;
+  height: 450px;
+  flex-shrink: 0;
   object-fit: cover;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
 }
 
-.thumbnail:hover {
-  opacity: 0.8;
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+  z-index: 2;
+}
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-btn.prev {
+  left: 1rem;
+}
+
+.carousel-btn.next {
+  right: 1rem;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-dot.active {
+  background: white;
 }
 
 /* 房間資訊樣式 */
@@ -302,8 +344,15 @@
     gap: 0.8rem;
   }
 
-  .main-photo {
-    height: 250px;
+  .carousel-slide {
+    height: 350px;
+  }
+
+  .carousel-btn {
+    padding: 0.5rem;
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
   }
 
   .room-amenities ul {
@@ -332,10 +381,6 @@
 
   .amount {
     font-size: 1.5rem;
-  }
-
-  .photo-gallery {
-    justify-content: center;
   }
 
   .room-amenities ul {

@@ -1,56 +1,174 @@
-// 照片瀏覽功能
-class PhotoViewer {
+// 房間輪播功能
+class RoomCarousel {
+  constructor(carouselElement) {
+    this.carousel = carouselElement;
+    this.track = this.carousel.querySelector(".carousel-track");
+    this.slides = Array.from(this.track.querySelectorAll(".carousel-slide"));
+    this.dotsContainer = this.carousel.querySelector(".carousel-dots");
+    this.nextButton = this.carousel.querySelector(".next");
+    this.prevButton = this.carousel.querySelector(".prev");
+
+    this.currentSlide = 0;
+    this.slideCount = this.slides.length;
+    this.autoplayInterval = null;
+
+    this.initializeCarousel();
+    this.bindEvents();
+    this.startAutoplay();
+  }
+
+  initializeCarousel() {
+    // 設定輪播軌道寬度
+    this.track.style.width = `${this.slideCount * 100}%`;
+    this.slides.forEach(slide => {
+      slide.style.width = `${100 / this.slideCount}%`;
+    });
+
+    // 創建導航點
+    this.slides.forEach((_, index) => {
+      const dot = document.createElement("button");
+      dot.classList.add("carousel-dot");
+      if (index === 0) dot.classList.add("active");
+      this.dotsContainer.appendChild(dot);
+    });
+  }
+
+  bindEvents() {
+    this.nextButton.addEventListener("click", () => {
+      this.stopAutoplay();
+      this.nextSlide();
+      this.startAutoplay();
+    });
+
+    this.prevButton.addEventListener("click", () => {
+      this.stopAutoplay();
+      this.prevSlide();
+      this.startAutoplay();
+    });
+
+    this.dotsContainer.addEventListener("click", e => {
+      if (!e.target.matches(".carousel-dot")) return;
+
+      const dotIndex = Array.from(this.dotsContainer.children).indexOf(e.target);
+      this.stopAutoplay();
+      this.goToSlide(dotIndex);
+      this.startAutoplay();
+    });
+
+    // 滑鼠懸停時暫停自動播放
+    this.carousel.addEventListener("mouseenter", () => this.stopAutoplay());
+    this.carousel.addEventListener("mouseleave", () => this.startAutoplay());
+
+    // 點擊圖片開啟 Modal
+    this.slides.forEach(slide => {
+      slide.addEventListener("click", () => this.openModal(slide));
+    });
+  }
+
+  nextSlide() {
+    this.currentSlide = (this.currentSlide + 1) % this.slideCount;
+    this.updateCarousel();
+  }
+
+  prevSlide() {
+    this.currentSlide = (this.currentSlide - 1 + this.slideCount) % this.slideCount;
+    this.updateCarousel();
+  }
+
+  goToSlide(index) {
+    this.currentSlide = index;
+    this.updateCarousel();
+  }
+
+  updateCarousel() {
+    // 更新輪播軌道位置
+    this.track.style.transform = `translateX(-${this.currentSlide * (100 / this.slideCount)}%)`;
+
+    // 更新導航點狀態
+    const dots = this.dotsContainer.querySelectorAll(".carousel-dot");
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === this.currentSlide);
+    });
+  }
+
+  startAutoplay() {
+    if (this.autoplayInterval) return;
+    this.autoplayInterval = setInterval(() => this.nextSlide(), 5000);
+  }
+
+  stopAutoplay() {
+    if (this.autoplayInterval) {
+      clearInterval(this.autoplayInterval);
+      this.autoplayInterval = null;
+    }
+  }
+
+  openModal(clickedImg) {
+    const modal = document.getElementById("photo-modal");
+    const modalImg = document.getElementById("modal-img");
+    modalImg.src = clickedImg.src;
+    modal.style.display = "block";
+
+    // 在 Modal 中設置當前圖片索引
+    modal.dataset.currentIndex = this.slides.indexOf(clickedImg);
+    modal.dataset.carouselId = this.carousel.id;
+  }
+}
+
+// Modal 視窗控制
+class ModalController {
   constructor() {
     this.modal = document.getElementById("photo-modal");
     this.modalImg = document.getElementById("modal-img");
-    this.currentPhotoIndex = 0;
-    this.photos = [];
 
-    // 綁定事件
     this.bindEvents();
   }
 
   bindEvents() {
-    // 點擊主要照片和縮圖開啟 Modal
-    document.querySelectorAll(".main-photo, .thumbnail").forEach(img => {
-      img.addEventListener("click", e => this.openModal(e.target));
-    });
-
-    // 關閉 Modal
+    // 關閉按鈕
     document.querySelector(".close-modal").addEventListener("click", () => this.closeModal());
 
-    // 上一張/下一張按鈕
+    // Modal 的上一張/下一張按鈕
     document.querySelector(".modal-prev").addEventListener("click", () => this.showPrevPhoto());
     document.querySelector(".modal-next").addEventListener("click", () => this.showNextPhoto());
 
-    // ESC 鍵關閉 Modal
+    // 鍵盤控制
     window.addEventListener("keydown", e => {
+      if (!this.modal.style.display || this.modal.style.display === "none") return;
+
       if (e.key === "Escape") this.closeModal();
       if (e.key === "ArrowLeft") this.showPrevPhoto();
       if (e.key === "ArrowRight") this.showNextPhoto();
     });
   }
 
-  openModal(clickedImg) {
-    const roomCard = clickedImg.closest(".room-card");
-    this.photos = Array.from(roomCard.querySelectorAll(".main-photo, .thumbnail")).map(img => img.src);
-    this.currentPhotoIndex = this.photos.indexOf(clickedImg.src);
-    this.modalImg.src = this.photos[this.currentPhotoIndex];
-    this.modal.style.display = "block";
-  }
-
   closeModal() {
     this.modal.style.display = "none";
   }
 
+  getCurrentCarousel() {
+    const carouselId = this.modal.dataset.carouselId;
+    return document.getElementById(carouselId);
+  }
+
   showPrevPhoto() {
-    this.currentPhotoIndex = (this.currentPhotoIndex - 1 + this.photos.length) % this.photos.length;
-    this.modalImg.src = this.photos[this.currentPhotoIndex];
+    const carousel = this.getCurrentCarousel();
+    const slides = carousel.querySelectorAll(".carousel-slide");
+    let currentIndex = parseInt(this.modal.dataset.currentIndex);
+
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    this.modalImg.src = slides[currentIndex].src;
+    this.modal.dataset.currentIndex = currentIndex;
   }
 
   showNextPhoto() {
-    this.currentPhotoIndex = (this.currentPhotoIndex + 1) % this.photos.length;
-    this.modalImg.src = this.photos[this.currentPhotoIndex];
+    const carousel = this.getCurrentCarousel();
+    const slides = carousel.querySelectorAll(".carousel-slide");
+    let currentIndex = parseInt(this.modal.dataset.currentIndex);
+
+    currentIndex = (currentIndex + 1) % slides.length;
+    this.modalImg.src = slides[currentIndex].src;
+    this.modal.dataset.currentIndex = currentIndex;
   }
 }
 
@@ -106,14 +224,14 @@ class RoomComparison {
     selectedRoomCards.forEach(card => {
       const row = document.createElement("tr");
       row.innerHTML = `
-                <td>${card.querySelector("h2").textContent}</td>
-                <td>${card.querySelector(".room-features span:nth-child(3)").textContent}</td>
-                <td>${card.querySelector(".room-features span:nth-child(2)").textContent}</td>
-                <td>${card.querySelector(".price .amount").textContent}</td>
-                <td>${Array.from(card.querySelectorAll(".room-amenities li"))
-                  .map(li => li.textContent)
-                  .join("、")}</td>
-            `;
+        <td>${card.querySelector("h2").textContent}</td>
+        <td>${card.querySelector(".room-features span:nth-child(3)").textContent}</td>
+        <td>${card.querySelector(".room-features span:nth-child(2)").textContent}</td>
+        <td>${card.querySelector(".price .amount").textContent}</td>
+        <td>${Array.from(card.querySelectorAll(".room-amenities li"))
+          .map(li => li.textContent)
+          .join("、")}</td>
+      `;
       tbody.appendChild(row);
     });
   }
@@ -178,7 +296,14 @@ class BookingProcess {
 
 // 初始化所有功能
 document.addEventListener("DOMContentLoaded", () => {
-  new PhotoViewer();
+  // 初始化每個輪播
+  document.querySelectorAll(".room-carousel").forEach((carousel, index) => {
+    carousel.id = `carousel-${index}`;
+    new RoomCarousel(carousel);
+  });
+
+  // 初始化其他功能
+  new ModalController();
   new RoomComparison();
   new LiveUpdate();
   new BookingProcess();
