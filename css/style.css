@@ -134,7 +134,7 @@ main {
 .page-banner {
   position: relative;
   height: 300px;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/banner.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/family-suite.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -455,6 +455,15 @@ main {
     display: block;
   }
 
+  .hero {
+    background-attachment: scroll;
+  }
+
+  .hero-content {
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
+
   .nav-menu,
   .main-nav {
     display: none;
@@ -489,10 +498,14 @@ main {
 
   .hero-content h1 {
     font-size: 2.5rem;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
   }
 
   .hero-content p {
     font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   }
 
   .feature-grid,
